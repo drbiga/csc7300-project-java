@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="FM_Index">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/FM_Index.jar!/" />
+      <root url="file://$USER_HOME$/.jdks/openjdk-21.0.1/javafx-sdk-21.0.1/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/.jdks/openjdk-21.0.1/javafx-sdk-21.0.1/lib" recursive="false" />
+  </library>
+</component>
