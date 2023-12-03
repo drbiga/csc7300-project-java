@@ -11,7 +11,8 @@ public class FMIndex {
     WaveletTree wt;
     int blockSize;
     String sequence;
-    SuffixArray sa;
+//    SuffixArray sa;
+    SkewSuffixArray sa;
     String query;
     char q;
     int s;
@@ -25,14 +26,16 @@ public class FMIndex {
         pos = new HashMap<>();
         
         // Create suffix array (Also creates BW Text)
-        sa = new SuffixArray(sequence);
+        sa = new SkewSuffixArray(sequence);
         
         // Get BW Text from suffix array
-        String bwt = sa.getBWT();
-        
+        String bwt = sa.generateBwt();
+
+        System.out.println("Creating C dictionary");
         // Create C dictionary
         c = new C(sequence);
-        
+
+        System.out.println("Creating Wavelet tree");
         // Create wavelet tree from the BW Text
         // This compresses the BW Text and allows for O(1) time retrieval of rank(x, i)
         wt = new WaveletTree(bwt, blockSize);

@@ -9,21 +9,12 @@ import java.util.logging.Logger;
 public class Driver {
     
     public static void main(String[] args) {
-        // Testing Block class
-//        boolean[] bitvector = {false, true, false, false, false, true, false};
-//        int blockSize = 5;
-//        Block b = new Block(bitvector, blockSize);
-//        System.out.println("Checkpoints vector:");
-//        b.printCheckpoints();
-//        int index = 4;
-//        System.out.println(String.format("Number of zeros until index %d: %d", index, b.getCount(index, false)));
         try {
-//             Open file and extract sequence
+//            Scanner in = new Scanner(new File("data/sampledna.txt"));
             Scanner in = new Scanner(new File("data/dna.50MB.nonl.txt"));
             String sequence = in.nextLine();
-//            String sequence = "banana";
 
-            int blockSize = 500000;
+            int blockSize = 5000;
             // Initialize FM-Index with sequence
             FMIndex fmi = new FMIndex(sequence, blockSize);
 

@@ -52,9 +52,9 @@ public class Block {
     }
 
     public int getCount(int index, boolean encoding) {
-        System.out.println("Block.getCount()");
+//        System.out.println("Block.getCount()");
         if (this.useSimpleScan) {
-            System.out.println("Block.getCount() -> useSimpleScan");
+//            System.out.println("Block.getCount() -> useSimpleScan");
             int count = 0;
             for (int i = 0; i < index; i++) {
                 if (this.bitvector[i] == encoding) {
@@ -63,7 +63,7 @@ public class Block {
             }
             return count;
         }
-        System.out.println("Block.getCount() -> not useSimpleScan");
+//        System.out.println("Block.getCount() -> not useSimpleScan");
         int checkpointIndex = index / blockSize - 1;
 //        System.out.println(String.format("Checkpoint index is %d", checkpointIndex));
 

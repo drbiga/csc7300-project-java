@@ -16,8 +16,22 @@ public class WaveletTree {
     public WaveletTree(String s, int blockSize) {
         this.s = s;
         this.blockSize = blockSize;
+
+        // TODO: extract alphabet and pass to the node?
+        // String alphabet = this.extractAlphabet(s);
+
         root = constructTree(s, new Node(s, blockSize));
     }
+
+    /**
+     * Written by the group.
+     * @param s
+     * @return
+     * TODO
+     */
+//    private String extractAlphabet(String s) {
+//
+//    }
     
     /**
      * Construct a wavelet tree
