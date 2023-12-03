@@ -12,28 +12,28 @@ import java.time.LocalDateTime;
 public class Driver {
     
     public static void main(String[] args) {
-        runBanana();
+//        runBanana();
 //        System.out.println("=======================================");
 //        System.out.println("RUNNING DNA");
 //        runDna();
 //        System.out.println("=======================================");
 //        System.out.println("RUNNING SOURCES");
 //        runSources();
-//        System.out.println("=======================================");
-//        System.out.println("RUNNING ENGLISH");
-//        runEnglish();
+        System.out.println("=======================================");
+        System.out.println("RUNNING ENGLISH");
+        runEnglish();
     }
 
     public static void runBanana() {
         String sequence = "banana";
 
         String[] queries = {
-                "nana",
+//                "nana",
                 "ana",
-                "ba",
+//                "ba",
         };
 
-        int[] blockSizes = {100, 1000, 10000, 100000};
+        int[] blockSizes = {1};
         for (int blockSize : blockSizes) {
             System.out.println(String.format("Running for block size %d", blockSize));
             runBlockSize(sequence, blockSize, queries);
@@ -46,8 +46,8 @@ public class Driver {
             String sequence = in.nextLine();
 
             String[] queries = {
-                    "GTA",
-                    "ATGCGA",
+//                    "GTA",
+//                    "ATGCGA",
                     "GATCACTGATG",
             };
 
@@ -67,8 +67,8 @@ public class Driver {
             String sequence = in.nextLine();
 
             String[] queries = {
-                    "something that is not there",
-                    "int main",
+//                    "something that is not there",
+//                    "int main",
                     "struct",
             };
 
@@ -84,15 +84,19 @@ public class Driver {
 
     public static void runEnglish() {
         try {
-            Scanner in = new Scanner(new File("data/englishsample1M.txt"));
+            Scanner in = new Scanner(new File("data/englishsample1M.txt"), "windows-1252");
             String sequence = in.nextLine();
-
+//            System.out.println(sequence);0
             String[] queries = {
-                    "something that maybe is not there",
-                    "something",
-                    "the fox jumps over the lazy dog",
-                    "cat",
-                    "playing cards"
+//                    "something that maybe is not there",
+//                    "something",
+//                    "the fox jumps over the lazy dog",
+//                    "cat",
+//                    "playing cards",
+                    "placed it in the hands" // extracted from text file
+//                    "placed" // extracted from text file
+//                    "Graphics" // extracted from the text file
+//                    "number of graphics" // extracted from the text file
             };
 
             int[] blockSizes = {100, 1000, 10000, 100000};
@@ -111,6 +115,8 @@ public class Driver {
         long end = System.currentTimeMillis();
 
         System.out.println(String.format("\tIndex Build Time: %s", end - start));
+        System.out.println("Meg used="+(Runtime.getRuntime().totalMemory()-
+                Runtime.getRuntime().freeMemory())/(1000*1000)+"M");
 
         for (String query: queries) {
             System.out.println(String.format("\tRunning query: %s", query));

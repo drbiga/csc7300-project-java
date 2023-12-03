@@ -36,7 +36,6 @@ public class SkewSuffixArray {
         System.out.println("\tSkewSuffixArray.generateBwt()");
         System.out.println("\t\tComputing suffix array");
         int[] suffixArray = this.computeFromText(this.text);
-        System.out.println("\t\tSuffix array: " + Arrays.toString(suffixArray));
 
         System.out.println("\t\tComputing BWT from suffix array");
         char[] charText = this.text.toCharArray();
