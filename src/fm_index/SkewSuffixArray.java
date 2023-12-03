@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class SkewSuffixArray {
     private final String text;
@@ -32,15 +33,19 @@ public class SkewSuffixArray {
      * Written by the group.
      */
     public String generateBwt() {
-        System.out.println("SkewSuffixArray.generateBwt()");
-        System.out.println("\tComputing suffix array");
+        System.out.println("\tSkewSuffixArray.generateBwt()");
+        System.out.println("\t\tComputing suffix array");
         int[] suffixArray = this.computeFromText(this.text);
+        System.out.println("\t\tSuffix array: " + Arrays.toString(suffixArray));
 
-        System.out.println("\tComputing BWT from suffix array");
+        System.out.println("\t\tComputing BWT from suffix array");
         char[] charText = this.text.toCharArray();
         StringBuilder builder = new StringBuilder();
         for (int start : suffixArray) {
-            int index = (start + suffixArray.length - 1) % suffixArray.length;
+            int index = start - 1;
+            if (index == -1) {
+                index = suffixArray.length - 1;
+            }
             builder.append(charText[index]);
         }
 

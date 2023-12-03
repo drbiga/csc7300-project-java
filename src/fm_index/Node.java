@@ -21,7 +21,7 @@ public class Node {
         this.blockSize = blockSize;
         encode(s);
         calculateBitVector(s);
-//        this.block = new Block(this.bitVector, blockSize);
+        this.block = new Block(this.bitVector, blockSize);
     }
 
     public Node getLeft() {

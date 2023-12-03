@@ -11,8 +11,8 @@ public class FMIndex {
     WaveletTree wt;
     int blockSize;
     String sequence;
-//    SuffixArray sa;
-    SkewSuffixArray sa;
+    SuffixArray sa;
+//    SkewSuffixArray sa;
     String query;
     char q;
     int s;
@@ -26,16 +26,19 @@ public class FMIndex {
         pos = new HashMap<>();
         
         // Create suffix array (Also creates BW Text)
-        sa = new SkewSuffixArray(sequence);
+//        sa = new SkewSuffixArray(sequence);
+        sa = new SuffixArray(sequence);
         
         // Get BW Text from suffix array
-        String bwt = sa.generateBwt();
+//        String bwt = sa.generateBwt();
+        String bwt = sa.getBWT();
+        System.out.println("\tBWT: " + bwt);
 
-        System.out.println("Creating C dictionary");
+        System.out.println("\tCreating C dictionary");
         // Create C dictionary
         c = new C(sequence);
 
-        System.out.println("Creating Wavelet tree");
+        System.out.println("\tCreating Wavelet tree");
         // Create wavelet tree from the BW Text
         // This compresses the BW Text and allows for O(1) time retrieval of rank(x, i)
         wt = new WaveletTree(bwt, blockSize);
@@ -65,8 +68,9 @@ public class FMIndex {
             
             // If end index becomes larger than start index, then query not found
             if (e < s) {
-                System.out.println("Query: \"" + query + "\" not found");
-                System.exit(0);
+//                System.out.println("Query: \"" + query + "\" not found");
+//                System.exit(0);
+                return new int[]{1, 0};
             }
         }
         
